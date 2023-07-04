@@ -1,0 +1,27 @@
+
+.page {
+		height: 100vh;
+		position: relative;
+}
+.footer{
+		    display: flex;
+		    position: -webkit-sticky;
+		    position: sticky;
+		    bottom: 0;
+			justify-content: space-between;
+			padding: 0vw 5vw;
+}
+.cuIcon-cu-image{
+		width: 20px;
+		height: 20px;
+}
+.text-green{
+		color: #4CAF50;
+		    font-weight: 600;
+		    font-size: 16px;
+}
+.text-gray{
+		color: #8799a3;
+		    font-weight: 600;
+		    font-size: 16px;
+}

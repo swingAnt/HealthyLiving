@@ -1,0 +1,1 @@
+<view class="uni-card"><navigator wx:for="{{a}}" wx:for-item="item" wx:key="e" hover-class="none" url="{{item.b}}" navigateTo class="{{['nav-li', item.c]}}" style="{{item.d}}"><view class="nav-name">{{item.a}}</view></navigator></view>

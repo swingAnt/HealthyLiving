@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "健康生活",
+  "usingComponents": {
+    "lunbo": "../../components/lunbo/lunbo",
+    "card-view": "../../components/card-view/card-view"
+  }
+}
