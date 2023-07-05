@@ -5,21 +5,20 @@
 		<card-view></card-view>
 		<view class="cu-bar tabbar bg-white shadow footer">
 				<view class="action" @click="NavChange" data-cur="basics">
-					<view class='cuIcon-cu-image'>
-						<image :src="'/static/tabbar/basics' + [PageCur=='basics'?'_cur':''] + '.png'"></image>
-					</view>
+		
+						<image class='cuIcon-cu-image' :src="'/static/tabbar/basics' + [PageCur=='basics'?'_cur':''] + '.png'"></image>
 					<view :class="PageCur=='basics'?'text-green':'text-gray'">首页</view>
 				</view>
 				<view class="action" @click="NavChange" data-cur="component">
-					<view class='cuIcon-cu-image'>
-						<image :src="'/static/tabbar/component' + [PageCur == 'component'?'_cur':''] + '.png'"></image>
-					</view>
+						<image class='cuIcon-cu-image' :src="'/static/tabbar/component' + [PageCur == 'component'?'_cur':''] + '.png'"></image>
 					<view :class="PageCur=='component'?'text-green':'text-gray'">商场</view>
 				</view>
+				<view class="action" @click="NavChange" data-cur="component">
+						<image class='cuIcon-cu-image' :src="'/static/tabbar/basics' + [PageCur == 'component'?'_cur':''] + '.png'"></image>
+					<view :class="PageCur=='component'?'text-green':'text-gray'">消息</view>
+				</view>
 				<view class="action" @click="NavChange" data-cur="plugin">
-					<view class='cuIcon-cu-image'>
-						<image :src="'/static/tabbar/plugin' + [PageCur == 'plugin'?'_cur':''] + '.png'"></image>
-					</view>
+						<image class='cuIcon-cu-image' :src="'/static/tabbar/plugin' + [PageCur == 'plugin'?'_cur':''] + '.png'"></image>
 					<view :class="PageCur=='plugin'?'text-green':'text-gray'">我的</view>
 				</view>
 		</view>
@@ -45,6 +44,12 @@
 </script>
 
 <style>
+	.action{
+		    display: flex;
+		    align-items: center;
+		    flex-direction: column;
+		    justify-content: center;
+	}
 	.page {
 		height: 100vh;
 		position: relative;

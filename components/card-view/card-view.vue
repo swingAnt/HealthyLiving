@@ -1,6 +1,6 @@
 <template>
 	<view class="uni-card">
-		<navigator hover-class='none' :url="'/pages/component/' + item.path" class="nav-li" navigateTo
+		<navigator hover-class='none' :url="'/pages/list/list?type=' + item.path" class="nav-li" navigateTo
 			:class="'bg-'+item.color" :style="[{animation: 'show ' + ((index+1)*0.2+1) + 's 1'}]"
 			v-for="(item,index) in list" :key="index">
 			<view class="nav-name">{{item.name}}</view>

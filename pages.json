@@ -6,7 +6,47 @@
 				"navigationBarTitleText": "健康生活"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/list/list",
+            "style" : {
+                "enablePullDownRefresh": true,
+                "navigationBarTitleText": "健康论坛"
+            }
+            
+        }
+		// {
+  //           "path" : "/pages/detail/detail",
+  //           "style" : {
+  //               "enablePullDownRefresh": true,
+  //               "navigationBarTitleText": "详情"
+  //           }
+            
+  //       }
+        ,{
+            "path" : "pages/detail/detail",
+            "style" : {
+                "app-plus": {
+                    "titleNView": {
+                        "buttons": [
+                            {
+                                "type": "share"
+                            }
+                        ],
+                        "type": "transparent"
+                    }
+                },
+                "h5": {
+                    "titleNView": {
+                        "buttons": [
+                        ],
+                        "type": "transparent"
+                    }
+                },
+                "navigationBarTitleText": "文章详情"
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

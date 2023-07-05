@@ -58,7 +58,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.f($data.list, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
-        b: "/pages/component/" + item.path,
+        b: "/pages/list/list?type=" + item.path,
         c: common_vendor.n("bg-" + item.color),
         d: common_vendor.s({
           animation: "show " + ((index + 1) * 0.2 + 1) + "s 1"
@@ -68,5 +68,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/workspace/HealthyLiving/components/card-view/card-view.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/components/card-view/card-view.vue"]]);
 wx.createComponent(Component);

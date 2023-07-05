@@ -1,4 +1,10 @@
 
+.action{
+		    display: flex;
+		    align-items: center;
+		    flex-direction: column;
+		    justify-content: center;
+}
 .page {
 		height: 100vh;
 		position: relative;
