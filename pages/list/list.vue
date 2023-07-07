@@ -9,10 +9,13 @@
 	<view>
 		<!-- 刷新页面后的顶部提示框 -->
 		<view class="tips" :class="{ 'tips-ani': tipShow }">为您更新了10条最新新闻动态</view>
-		<unicloud-db ref="udb" v-slot:default="{data, loading, error, options}" :options="formData" :collection="collection"
-		 :field="field" @load="load">
+<!-- 		<view v-on:click="get()">查询列表云函数</view>
+		<view @click="getS">查询列表云对象</view> -->
+		
+	<!-- 	<unicloud-db   ref="udb" v-slot:default="{data, loading, error, options}" :options="formData" :collection="collection"
+		 :field="field" @load="load"> -->
 			<!-- 基于 uni-list 的页面布局 -->
-			<uni-list>
+			<uni-list v-if="canUse">
 				<!-- to 属性携带参数跳转详情页面，当前只为参考 -->
 				<uni-list-item direction="column" v-for="item in data" :key="item.id" :to="'/pages/detail/detail?id='+item._id+'&title='+item.title">
 					<!-- 通过header插槽定义列表的标题 -->
@@ -43,12 +46,19 @@
 				</uni-list-item>
 			</uni-list>
 			<!-- 通过 loadMore 组件实现上拉加载效果，如需自定义显示内容，可参考：https://ext.dcloud.net.cn/plugin?id=29 -->
-			<uni-load-more v-if="loading || options.status === 'noMore' " :status="options.status" />
-		</unicloud-db>
+<!-- 			<uni-load-more v-if="loading || options.status === 'noMore' " :status="options.status" /> -->
+	<!-- 	</unicloud-db> -->
 	</view>
 </template>
 
 <script>
+	//判断当前环境是否支持云对象。云对象详情：https://uniapp.dcloud.net.cn/uniCloud/cloud-obj
+	let canUse = true,cloudObjectDemo;
+	if (uniCloud.importObject) {
+		cloudObjectDemo = uniCloud.importObject('cloud-lists');
+	} else {
+		canUse = false
+	}
 	export default {
 		components: {},
 		data() {
@@ -60,32 +70,94 @@
 				formData: {
 					status: 'loading' // 加载状态
 				},
-				tipShow: false // 是否显示顶部提示框
+				tipShow: false ,// 是否显示顶部提示框
+				canUse,
+				data:[],
+				page:0
+				
 			};
 		},
-		onLoad() {},
-		methods: {
-			load(data, ended) {
-				if (ended) {
-					this.formData.status = 'noMore'
-				}
-			}
+		onLoad() {
+			this.get()
 		},
+		methods: {
+			//云函数
+			get() {
+				uni.showLoading({
+					title: '处理中...'
+				})
+				uniCloud.callFunction({
+					name: 'get',
+					data:{page:this.page}
+				}).then((res) => {
+					uni.hideLoading()
+					// uni.showModal({
+					// 	content: `查询成功，获取数据列表为：${JSON.stringify(res.result.data)}`,
+					// 	showCancel: false
+					// })
+					this.page+=1
+					console.log(res)
+					this.data=res.result.data
+				}).catch((err) => {
+					uni.hideLoading()
+					uni.showModal({
+						content: `查询失败，错误信息为：${err.message}`,
+						showCancel: false
+					})
+					console.error(err)
+				})
+			},
+			//云对象
+			getS() {
+				uni.showLoading({
+					title: '处理中...'
+				})
+				cloudObjectDemo.get({page:this.page}).then((res) => {
+					uni.hideLoading()
+					// uni.showModal({
+					// 	content: `查询成功，获取数据列表为：${JSON.stringify(res)}`,
+					// 	showCancel: false
+					// })
+					this.page+=1
+				
+					console.log(res)
+					this.data=res.data
+					
+				}).catch((err) => {
+					uni.hideLoading()
+					uni.showModal({
+						content: `查询失败，错误信息为：${err.message}`,
+						showCancel: false
+					})
+					console.error(err)
+				})
+			},
+			
+		
+			},
+			
+				toRedisPage() {
+					uni.navigateTo({
+						url: '/pages/cloudFunction/redis/redis'
+					})
+				},
+			
+		
 		/**
 		 * 下拉刷新回调函数
 		 */
 		onPullDownRefresh() {
 			this.formData.status = 'more'
-			this.$refs.udb.loadData({
-				clear: true
-			}, () => {
+			// this.$refs.udb.loadData({
+			// 	clear: true
+			// }, () => {
 				this.tipShow = true
 				clearTimeout(this.timer)
 				this.timer = setTimeout(()=>{
 					this.tipShow  = false
 				},1000)
 				uni.stopPullDownRefresh()
-			})
+			// })
 		},
 		/**
 		 * 上拉加载回调函数

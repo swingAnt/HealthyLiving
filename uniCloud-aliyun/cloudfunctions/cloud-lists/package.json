@@ -1,0 +1,7 @@
+{
+  "name": "cloud-lists",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

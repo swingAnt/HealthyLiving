@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 	<scroll-view scroll-y class="page">
-		<lunbo></lunbo>
+		<lunbo></lunbo>		
 		<card-view></card-view>
 		<view class="cu-bar tabbar bg-white shadow footer">
 				<view class="action" @click="NavChange" data-cur="basics">
@@ -32,7 +32,7 @@
 	export default {
 		data() {
 		return {
-				PageCur: 'basics'
+				PageCur: 'basics',
 			}
 		},
 		methods: {
@@ -42,7 +42,6 @@
 		}
 	}
 </script>
-
 <style>
 	.action{
 		    display: flex;
@@ -61,6 +60,7 @@
 		    bottom: 0;
 			justify-content: space-between;
 			padding: 0vw 5vw;
+			background: white;
 	}
 	.cuIcon-cu-image{
 		width: 20px;

@@ -1,5 +1,11 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+let canUse = true, cloudObjectDemo;
+if (common_vendor.Ds.importObject) {
+  cloudObjectDemo = common_vendor.Ds.importObject("cloud-lists");
+} else {
+  canUse = false;
+}
 const _sfc_main = {
   components: {},
   data() {
@@ -12,34 +18,75 @@ const _sfc_main = {
         status: "loading"
         // 加载状态
       },
-      tipShow: false
+      tipShow: false,
       // 是否显示顶部提示框
+      canUse,
+      data: [],
+      page: 0
     };
   },
   onLoad() {
+    this.get();
   },
   methods: {
-    load(data, ended) {
-      if (ended) {
-        this.formData.status = "noMore";
-      }
+    //云函数
+    get() {
+      common_vendor.index.showLoading({
+        title: "处理中..."
+      });
+      common_vendor.Ds.callFunction({
+        name: "get",
+        data: { page: this.page }
+      }).then((res) => {
+        common_vendor.index.hideLoading();
+        this.page += 1;
+        console.log(res);
+        this.data = res.result.data;
+      }).catch((err) => {
+        common_vendor.index.hideLoading();
+        common_vendor.index.showModal({
+          content: `查询失败，错误信息为：${err.message}`,
+          showCancel: false
+        });
+        console.error(err);
+      });
+    },
+    //云对象
+    getS() {
+      common_vendor.index.showLoading({
+        title: "处理中..."
+      });
+      cloudObjectDemo.get({ page: this.page }).then((res) => {
+        common_vendor.index.hideLoading();
+        this.page += 1;
+        console.log(res);
+        this.data = res.data;
+      }).catch((err) => {
+        common_vendor.index.hideLoading();
+        common_vendor.index.showModal({
+          content: `查询失败，错误信息为：${err.message}`,
+          showCancel: false
+        });
+        console.error(err);
+      });
     }
+  },
+  toRedisPage() {
+    common_vendor.index.navigateTo({
+      url: "/pages/cloudFunction/redis/redis"
+    });
   },
   /**
    * 下拉刷新回调函数
    */
   onPullDownRefresh() {
     this.formData.status = "more";
-    this.$refs.udb.loadData({
-      clear: true
-    }, () => {
-      this.tipShow = true;
-      clearTimeout(this.timer);
-      this.timer = setTimeout(() => {
-        this.tipShow = false;
-      }, 1e3);
-      common_vendor.index.stopPullDownRefresh();
-    });
+    this.tipShow = true;
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.tipShow = false;
+    }, 1e3);
+    common_vendor.index.stopPullDownRefresh();
   },
   /**
    * 上拉加载回调函数
@@ -51,66 +98,34 @@ const _sfc_main = {
 if (!Array) {
   const _easycom_uni_list_item2 = common_vendor.resolveComponent("uni-list-item");
   const _easycom_uni_list2 = common_vendor.resolveComponent("uni-list");
-  const _easycom_uni_load_more2 = common_vendor.resolveComponent("uni-load-more");
-  const _easycom_unicloud_db2 = common_vendor.resolveComponent("unicloud-db");
-  (_easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_load_more2 + _easycom_unicloud_db2)();
+  (_easycom_uni_list_item2 + _easycom_uni_list2)();
 }
 const _easycom_uni_list_item = () => "../../uni_modules/uni-list/components/uni-list-item/uni-list-item.js";
 const _easycom_uni_list = () => "../../uni_modules/uni-list/components/uni-list/uni-list.js";
-const _easycom_uni_load_more = () => "../../uni_modules/uni-load-more/components/uni-load-more/uni-load-more.js";
-const _easycom_unicloud_db = () => "../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db.js";
 if (!Math) {
-  (_easycom_uni_list_item + _easycom_uni_list + _easycom_uni_load_more + _easycom_unicloud_db)();
+  (_easycom_uni_list_item + _easycom_uni_list)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
+  return common_vendor.e({
     a: $data.tipShow ? 1 : "",
-    b: common_vendor.w(({
-      data,
-      loading,
-      error,
-      options
-    }, s0, i0) => {
-      return common_vendor.e({
-        a: common_vendor.f(data, (item, k1, i1) => {
-          return {
-            a: common_vendor.t(item.title),
-            b: item.avatar.length > 3 ? item.avatar : item.avatar[0],
-            c: common_vendor.t(item.excerpt),
-            d: common_vendor.t(item.user_name),
-            e: common_vendor.t(item.last_modify_date),
-            f: item.id,
-            g: "4391c535-2-" + i0 + "-" + i1 + "," + ("4391c535-1-" + i0),
-            h: common_vendor.p({
-              direction: "column",
-              to: "/pages/detail/detail?id=" + item._id + "&title=" + item.title
-            })
-          };
-        }),
-        b: "4391c535-1-" + i0 + ",4391c535-0",
-        c: loading || options.status === "noMore"
-      }, loading || options.status === "noMore" ? {
-        d: "4391c535-3-" + i0 + ",4391c535-0",
-        e: common_vendor.p({
-          status: options.status
+    b: $data.canUse
+  }, $data.canUse ? {
+    c: common_vendor.f($data.data, (item, k0, i0) => {
+      return {
+        a: common_vendor.t(item.title),
+        b: item.avatar.length > 3 ? item.avatar : item.avatar[0],
+        c: common_vendor.t(item.excerpt),
+        d: common_vendor.t(item.user_name),
+        e: common_vendor.t(item.last_modify_date),
+        f: item.id,
+        g: "4391c535-1-" + i0 + ",4391c535-0",
+        h: common_vendor.p({
+          direction: "column",
+          to: "/pages/detail/detail?id=" + item._id + "&title=" + item.title
         })
-      } : {}, {
-        f: i0,
-        g: s0
-      });
-    }, {
-      name: "d",
-      path: "b",
-      vueId: "4391c535-0"
-    }),
-    c: common_vendor.sr("udb", "4391c535-0"),
-    d: common_vendor.o($options.load),
-    e: common_vendor.p({
-      options: $data.formData,
-      collection: $data.collection,
-      field: $data.field
+      };
     })
-  };
+  } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/pages/list/list.vue"]]);
 wx.createPage(MiniProgramPage);
