@@ -8,7 +8,7 @@
 	 -->
 	<view>
 		<!-- 刷新页面后的顶部提示框 -->
-		<view class="tips" :class="{ 'tips-ani': tipShow }">为您更新了10条最新新闻动态</view>
+		<view class="tips" :class="{ 'tips-ani': tipShow }">为您更新了10条最新动态</view>
 <!-- 		<view v-on:click="get()">查询列表云函数</view>
 		<view @click="getS">查询列表云对象</view> -->
 		
@@ -78,7 +78,7 @@
 			};
 		},
 		onLoad() {
-			this.get()
+			this.fetch()
 		},
 		methods: {
 			//云函数
@@ -108,7 +108,7 @@
 				})
 			},
 			//云对象
-			getS() {
+			fetch() {
 				uni.showLoading({
 					title: '处理中...'
 				})
@@ -119,7 +119,6 @@
 					// 	showCancel: false
 					// })
 					this.page+=1
-				
 					console.log(res)
 					this.data=res.data
 					
@@ -147,6 +146,27 @@
 		 * 下拉刷新回调函数
 		 */
 		onPullDownRefresh() {
+			uni.showLoading({
+				title: '处理中...'
+			})
+			cloudObjectDemo.get({page:this.page}).then((res) => {
+				uni.hideLoading()
+				this.data=res.data
+				this.tipShow = true
+				clearTimeout(this.timer)
+				this.timer = setTimeout(()=>{
+					this.tipShow  = false
+				},1000)
+				// uni.stopPullDownRefresh()
+				
+			}).catch((err) => {
+				uni.hideLoading()
+				uni.showModal({
+					content: `查询失败，错误信息为：${err.message}`,
+					showCancel: false
+				})
+				console.error(err)
+			})
 			this.formData.status = 'more'
 			// this.$refs.udb.loadData({
 			// 	clear: true

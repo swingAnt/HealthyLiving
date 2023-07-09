@@ -52,7 +52,7 @@ module.exports = {
 			}
 		}
 	},
-	async get(page) {
+	async get({page}) {
 		const res = await testCollection.skip(page*10).limit(10).get()
 		console.log('云对象',res)
 		return res
