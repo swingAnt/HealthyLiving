@@ -79,12 +79,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         a: !loading && data
       }, !loading && data ? {
         b: common_vendor.t($data.title),
-        c: "79c2c2d6-2-" + i0 + "," + ("79c2c2d6-1-" + i0),
+        c: "81ff6494-2-" + i0 + "," + ("81ff6494-1-" + i0),
         d: common_vendor.p({
           thumbSize: "lg",
           thumb: data.author_avatar
         }),
-        e: "79c2c2d6-1-" + i0 + ",79c2c2d6-0",
+        e: "81ff6494-1-" + i0 + ",81ff6494-0",
         f: common_vendor.p({
           border: false
         }),
@@ -96,9 +96,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       name: "d",
       path: "a",
-      vueId: "79c2c2d6-0"
+      vueId: "81ff6494-0"
     }),
-    b: common_vendor.sr("detail", "79c2c2d6-0"),
+    b: common_vendor.sr("detail", "81ff6494-0"),
     c: common_vendor.o($options.loadData),
     d: common_vendor.p({
       options: $data.formData,
@@ -110,5 +110,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/pages/detail/detail.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/workspace/HealthyLiving/pages/detail/detail.vue"]]);
 wx.createPage(MiniProgramPage);

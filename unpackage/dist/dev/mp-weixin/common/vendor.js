@@ -1509,8 +1509,8 @@ function populateParameters(fromRes, toRes) {
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
-    uniCompileVersion: "3.8.4",
-    uniRuntimeVersion: "3.8.4",
+    uniCompileVersion: "3.8.7",
+    uniRuntimeVersion: "3.8.7",
     uniPlatform: "mp-weixin",
     deviceBrand,
     deviceModel: model,
@@ -7492,7 +7492,7 @@ class I {
 function S(e2) {
   return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
 }
-const b = true, k = "mp-weixin", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "2.0.0.1",\n        "10.0.20.211"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/lijunkai7/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"above-the-cloud","spaceId":"mp-970b6f53-3880-4e99-a421-3b248825ecdf","clientSecret":"2GbhkRnHDQVLbHiU3MS97g==","endpoint":"https://api.next.bspapp.com"}]') || [];
+const b = true, k = "mp-weixin", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.132"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"above-the-cloud","spaceId":"mp-970b6f53-3880-4e99-a421-3b248825ecdf","clientSecret":"2GbhkRnHDQVLbHiU3MS97g==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let x = "";
 try {
   x = "__UNI__AB5ED9E";

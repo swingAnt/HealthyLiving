@@ -1,8 +1,10 @@
 <template>
 	<view class="content">
 	<scroll-view scroll-y class="page">
-		<lunbo></lunbo>		
-		<card-view></card-view>
+		<lunbo v-if="PageCur=='basics'"></lunbo>		
+		<card-view v-if="PageCur=='basics'"></card-view>
+			<message v-if="PageCur=='message'"></message>
+			<phone-groups  v-if="PageCur=='component'"></phone-groups>
 		<view class="cu-bar tabbar bg-white shadow footer">
 				<view class="action" @click="NavChange" data-cur="basics">
 		
@@ -13,9 +15,9 @@
 						<image class='cuIcon-cu-image' :src="'/static/tabbar/component' + [PageCur == 'component'?'_cur':''] + '.png'"></image>
 					<view :class="PageCur=='component'?'text-green':'text-gray'">商场</view>
 				</view>
-				<view class="action" @click="NavChange" data-cur="component">
-						<image class='cuIcon-cu-image' :src="'/static/tabbar/basics' + [PageCur == 'component'?'_cur':''] + '.png'"></image>
-					<view :class="PageCur=='component'?'text-green':'text-gray'">消息</view>
+				<view class="action" @click="NavChange" data-cur="message">
+						<image class='cuIcon-cu-image' :src="'/static/tabbar/basics' + [PageCur == 'message'?'_cur':''] + '.png'"></image>
+					<view :class="PageCur=='message'?'text-green':'text-gray'">消息</view>
 				</view>
 				<view class="action" @click="NavChange" data-cur="plugin">
 						<image class='cuIcon-cu-image' :src="'/static/tabbar/plugin' + [PageCur == 'plugin'?'_cur':''] + '.png'"></image>

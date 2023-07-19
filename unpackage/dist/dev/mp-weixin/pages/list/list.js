@@ -26,7 +26,7 @@ const _sfc_main = {
     };
   },
   onLoad() {
-    this.get();
+    this.fetch();
   },
   methods: {
     //云函数
@@ -52,7 +52,7 @@ const _sfc_main = {
       });
     },
     //云对象
-    getS() {
+    fetch() {
       common_vendor.index.showLoading({
         title: "处理中..."
       });
@@ -80,6 +80,25 @@ const _sfc_main = {
    * 下拉刷新回调函数
    */
   onPullDownRefresh() {
+    common_vendor.index.showLoading({
+      title: "处理中..."
+    });
+    cloudObjectDemo.get({ page: this.page }).then((res) => {
+      common_vendor.index.hideLoading();
+      this.data = res.data;
+      this.tipShow = true;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.tipShow = false;
+      }, 1e3);
+    }).catch((err) => {
+      common_vendor.index.hideLoading();
+      common_vendor.index.showModal({
+        content: `查询失败，错误信息为：${err.message}`,
+        showCancel: false
+      });
+      console.error(err);
+    });
     this.formData.status = "more";
     this.tipShow = true;
     clearTimeout(this.timer);
@@ -118,7 +137,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.t(item.user_name),
         e: common_vendor.t(item.last_modify_date),
         f: item.id,
-        g: "4391c535-1-" + i0 + ",4391c535-0",
+        g: "59bba654-1-" + i0 + ",59bba654-0",
         h: common_vendor.p({
           direction: "column",
           to: "/pages/detail/detail?id=" + item._id + "&title=" + item.title
@@ -127,5 +146,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/pages/list/list.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/workspace/HealthyLiving/pages/list/list.vue"]]);
 wx.createPage(MiniProgramPage);
