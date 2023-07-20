@@ -8,7 +8,7 @@ const _sfc_main = {
       id: "60fa38e79c77390001e2b3a7",
       title: "",
       // 查询字段，多个字段用 , 分割
-      field: "title,author_avatar,author_name,author_name,last_modify_date,cover,excerpt,content",
+      field: "avatar,user_name,title,author_avatar,author_name,author_name,last_modify_date,cover,excerpt,content",
       formData: {
         noData: '<p style="text-align:center;color:#666">详情加载中...</p>'
       }
@@ -45,7 +45,7 @@ const _sfc_main = {
   },
   methods: {
     loadData(data) {
-      console.log(data);
+      console.log("zzzzzzz", data);
       if (this.title == "" && data.title) {
         this.title = data.title;
         common_vendor.index.setNavigationBarTitle({
@@ -75,34 +75,39 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       error,
       options
     }, s0, i0) => {
+      var _a, _b;
       return common_vendor.e({
         a: !loading && data
       }, !loading && data ? {
         b: common_vendor.t($data.title),
-        c: "81ff6494-2-" + i0 + "," + ("81ff6494-1-" + i0),
-        d: common_vendor.p({
+        c: common_vendor.t(data.user_name),
+        d: common_vendor.t(data.last_modify_date),
+        e: "79c2c2d6-2-" + i0 + "," + ("79c2c2d6-1-" + i0),
+        f: common_vendor.p({
           thumbSize: "lg",
           thumb: data.author_avatar
         }),
-        e: "81ff6494-1-" + i0 + ",81ff6494-0",
-        f: common_vendor.p({
+        g: "79c2c2d6-1-" + i0 + ",79c2c2d6-0",
+        h: common_vendor.p({
           border: false
         }),
-        g: _ctx.阿诗丹顿
+        i: ((_a = data.avatar) == null ? void 0 : _a.length) > 3 ? data.avatar : (_b = data.avatar) == null ? void 0 : _b[0],
+        j: common_vendor.t(data.excerpt),
+        k: _ctx.阿诗丹顿
       } : {}, {
-        h: i0,
-        i: s0
+        l: i0,
+        m: s0
       });
     }, {
       name: "d",
       path: "a",
-      vueId: "81ff6494-0"
+      vueId: "79c2c2d6-0"
     }),
-    b: common_vendor.sr("detail", "81ff6494-0"),
+    b: common_vendor.sr("detail", "79c2c2d6-0"),
     c: common_vendor.o($options.loadData),
     d: common_vendor.p({
       options: $data.formData,
-      collection: "opendb-news-articles-detail",
+      collection: "opendb-news-articles",
       where: $options.where,
       field: $data.field,
       getone: true,
@@ -110,5 +115,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/workspace/HealthyLiving/pages/detail/detail.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/pages/detail/detail.vue"]]);
 wx.createPage(MiniProgramPage);

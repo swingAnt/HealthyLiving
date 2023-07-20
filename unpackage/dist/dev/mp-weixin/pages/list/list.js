@@ -137,7 +137,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.t(item.user_name),
         e: common_vendor.t(item.last_modify_date),
         f: item.id,
-        g: "59bba654-1-" + i0 + ",59bba654-0",
+        g: "4391c535-1-" + i0 + ",4391c535-0",
         h: common_vendor.p({
           direction: "column",
           to: "/pages/detail/detail?id=" + item._id + "&title=" + item.title
@@ -146,5 +146,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/workspace/HealthyLiving/pages/list/list.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/pages/list/list.vue"]]);
 wx.createPage(MiniProgramPage);

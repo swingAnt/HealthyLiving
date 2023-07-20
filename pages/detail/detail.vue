@@ -7,7 +7,7 @@
 	 DB Schema 规范：https://uniapp.dcloud.net.cn/uniCloud/schema
 	-->  
 	<view class="article">
-		<unicloud-db v-slot:default="{data, loading, error, options}" :options="formData" collection="opendb-news-articles-detail" :where="where" :field="field"
+		<unicloud-db v-slot:default="{data, loading, error, options}" :options="formData" collection="opendb-news-articles" :where="where" :field="field"
 		 :getone="true"  :manual="true" ref="detail" @load="loadData">
 			<template v-if="!loading && data">
 				<view class="article-title">{{title}}</view>
@@ -16,8 +16,8 @@
 						<!-- 通过body插槽定义作者信息内容 -->
 						<template v-slot:body>
 							<view class="header-content">
-								<view class="uni-title">贾教授</view>
-								<view class="uni-note">更新于 2023:07:05 </view>
+								<view class="uni-title">{{data.user_name}}</view>
+								<view class="uni-note">更新于 {{data.last_modify_date}} </view>
 							</view>
 						</template>
 						<template v-slot:footer>
@@ -29,11 +29,11 @@
 				</uni-list>
 				<view class="banner">
 					<!-- 文章开头，缩略图 -->
-					<image src="/static/images/a.jpg" mode="widthFix" class="response"></image>
-					
+<!-- 					<image :src="data.avatar?.length > 3 ?data.avatar : data.avatar[0]" mode="widthFix" class="response"></image> -->
+						<image :src="data.avatar?.length > 3 ?data.avatar : data.avatar?.[0]" mode="aspectFill"></image>
 					<!-- 文章摘要 -->
 					<view class="banner-title">
-						<text class="uni-ellipsis">大汉萨科技汇顶科技三大类快散了电脑上两年里肯定是你发了困难的数量开发你的烦恼都算了看法呢</text>
+						<text class="uni-ellipsis">{{data.excerpt}}</text>
 					</view>
 				</view>
 				<view class="article-content">
@@ -53,7 +53,7 @@
 				id:"60fa38e79c77390001e2b3a7",
 				title:'',
 				// 查询字段，多个字段用 , 分割
-				field: 'title,author_avatar,author_name,author_name,last_modify_date,cover,excerpt,content',
+				field: 'avatar,user_name,title,author_avatar,author_name,author_name,last_modify_date,cover,excerpt,content',
 				formData: {
 					noData: '<p style="text-align:center;color:#666">详情加载中...</p>'
 				}, 
@@ -93,7 +93,7 @@
 		},
 		methods: {
 			loadData(data){
-				console.log(data);
+				console.log('zzzzzzz',data);
 				//如果上一页未传递标题过来（如搜索直达详情），则从新闻详情中读取标题
 				if(this.title == '' && data.title){
 					this.title = data.title
