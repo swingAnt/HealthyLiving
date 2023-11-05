@@ -1,8 +1,8 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 let canUse = true, cloudObjectDemo;
-if (common_vendor.Ds.importObject) {
-  cloudObjectDemo = common_vendor.Ds.importObject("cloud-lists");
+if (common_vendor.$s.importObject) {
+  cloudObjectDemo = common_vendor.$s.importObject("cloud-lists");
 } else {
   canUse = false;
 }
@@ -34,7 +34,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "处理中..."
       });
-      common_vendor.Ds.callFunction({
+      common_vendor.$s.callFunction({
         name: "get",
         data: { page: this.page }
       }).then((res) => {
@@ -80,6 +80,7 @@ const _sfc_main = {
    * 下拉刷新回调函数
    */
   onPullDownRefresh() {
+    console.log("onPullDownRefresh====");
     common_vendor.index.showLoading({
       title: "处理中..."
     });
@@ -137,7 +138,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.t(item.user_name),
         e: common_vendor.t(item.last_modify_date),
         f: item.id,
-        g: "4391c535-1-" + i0 + ",4391c535-0",
+        g: "387d13d5-1-" + i0 + ",387d13d5-0",
         h: common_vendor.p({
           direction: "column",
           to: "/pages/detail/detail?id=" + item._id + "&title=" + item.title
@@ -146,5 +147,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/pages/list/list.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/lijunkai7/Desktop/workspace/HealthyLiving/pages/community/community.vue"]]);
 wx.createPage(MiniProgramPage);

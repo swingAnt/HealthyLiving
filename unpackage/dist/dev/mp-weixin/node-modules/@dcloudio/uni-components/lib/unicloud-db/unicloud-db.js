@@ -31,7 +31,7 @@ const attrs = [
 const _sfc_main = {
   name: "UniClouddb",
   setup(props) {
-    const dataListRef = props.ssrKey ? props.getone ? common_vendor.shallowSsrRef(void 0, props.ssrKey) : common_vendor.ssrRef([], props.ssrKey) : props.getone ? common_vendor.shallowSsrRef(void 0, "M0Jhgmz4G+6NxxBDC+pjrw==") : common_vendor.ssrRef([], "E/NVm1vpkM/Z++G7S53Dcg==");
+    const dataListRef = props.ssrKey ? props.getone ? common_vendor.shallowSsrRef(void 0, props.ssrKey) : common_vendor.ssrRef([], props.ssrKey) : props.getone ? common_vendor.shallowSsrRef(void 0, "SNC0FF6AnOrJdtlrVS1w1g==") : common_vendor.ssrRef([], "yxuWH3IPe0ZDuJvZ41qVcw==");
     const instance = common_vendor.getCurrentInstance();
     common_vendor.onMounted(() => {
       if ((!dataListRef.value || dataListRef.value.length === 0) && !props.manual && props.loadtime === loadMode.auto) {
@@ -266,7 +266,7 @@ const _sfc_main = {
           title: loadingTitle
         });
       }
-      let db = common_vendor.Ds.database(this.spaceInfo);
+      let db = common_vendor.$s.database(this.spaceInfo);
       if (action) {
         db = db.action(action);
       }
@@ -338,7 +338,7 @@ const _sfc_main = {
           title: loadingTitle
         });
       }
-      let db = common_vendor.Ds.database(this.spaceInfo);
+      let db = common_vendor.$s.database(this.spaceInfo);
       if (action) {
         db = db.action(action);
       }
@@ -365,7 +365,7 @@ const _sfc_main = {
       });
     },
     getTemp(isTemp = true) {
-      let db = common_vendor.Ds.database(this.spaceInfo);
+      let db = common_vendor.$s.database(this.spaceInfo);
       if (this.action) {
         db = db.action(this.action);
       }
@@ -487,7 +487,7 @@ const _sfc_main = {
           title: loadingTitle
         });
       }
-      const db = common_vendor.Ds.database(this.spaceInfo);
+      const db = common_vendor.$s.database(this.spaceInfo);
       const dbCmd = db.command;
       let exec = db;
       if (action) {
@@ -549,5 +549,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db.vue"]]);
 wx.createComponent(Component);

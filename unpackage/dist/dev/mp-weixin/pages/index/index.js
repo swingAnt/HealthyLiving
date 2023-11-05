@@ -35,20 +35,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: $data.PageCur == "message"
   }, $data.PageCur == "message" ? {} : {}, {
     d: $data.PageCur == "component"
-  }, $data.PageCur == "component" ? {} : {}, {
-    e: "/static/tabbar/basics" + [$data.PageCur == "basics" ? "_cur" : ""] + ".png",
-    f: common_vendor.n($data.PageCur == "basics" ? "text-green" : "text-gray"),
-    g: common_vendor.o((...args) => $options.NavChange && $options.NavChange(...args)),
-    h: "/static/tabbar/component" + [$data.PageCur == "component" ? "_cur" : ""] + ".png",
-    i: common_vendor.n($data.PageCur == "component" ? "text-green" : "text-gray"),
-    j: common_vendor.o((...args) => $options.NavChange && $options.NavChange(...args)),
-    k: "/static/tabbar/basics" + [$data.PageCur == "message" ? "_cur" : ""] + ".png",
-    l: common_vendor.n($data.PageCur == "message" ? "text-green" : "text-gray"),
-    m: common_vendor.o((...args) => $options.NavChange && $options.NavChange(...args)),
-    n: "/static/tabbar/plugin" + [$data.PageCur == "plugin" ? "_cur" : ""] + ".png",
-    o: common_vendor.n($data.PageCur == "plugin" ? "text-green" : "text-gray"),
-    p: common_vendor.o((...args) => $options.NavChange && $options.NavChange(...args))
-  });
+  }, $data.PageCur == "component" ? {} : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/pages/index/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/lijunkai7/Desktop/workspace/HealthyLiving/pages/index/index.vue"]]);
 wx.createPage(MiniProgramPage);

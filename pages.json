@@ -3,25 +3,18 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "健康生活"
+				"navigationBarTitleText": "快乐生活"
 			}
 		}
 	    ,{
-            "path" : "pages/list/list",
+            "path" : "pages/community/community",
             "style" : {
                 "enablePullDownRefresh": true,
                 "navigationBarTitleText": "健康论坛"
             }
             
         }
-		// {
-  //           "path" : "/pages/detail/detail",
-  //           "style" : {
-  //               "enablePullDownRefresh": true,
-  //               "navigationBarTitleText": "详情"
-  //           }
-            
-  //       }
+        
         ,{
             "path" : "pages/detail/detail",
             "style" : {
@@ -45,6 +38,20 @@
                 "navigationBarTitleText": "文章详情"
             }
             
+        },
+        {
+        	"path" : "pages/play/play",
+        	"style" : {
+             //    "enablePullDownRefresh": true,
+        	    "navigationBarTitleText": "恭禧发财"
+        	}
+        },
+        {
+        	"path" : "pages/write/write",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "奇思妙想"
+        	}
         }
     ],
 	"globalStyle": {

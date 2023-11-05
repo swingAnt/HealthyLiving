@@ -1,6 +1,6 @@
 <template>
 	<view class="uni-card">
-		<navigator hover-class='none' :url="'/pages/list/list?type=' + item.path" class="nav-li" navigateTo
+		<navigator hover-class='none' :url="item.path" class="nav-li" navigateTo
 			:class="'bg-'+item.color" :style="[{animation: 'show ' + ((index+1)*0.2+1) + 's 1'}]"
 			v-for="(item,index) in list" :key="index">
 			<view class="nav-name">{{item.name}}</view>
@@ -13,20 +13,23 @@
 		data() {
 			return {
 				list: [{
-					name: '饮食',
-					path: 'each',
+					name: '论坛',
 					color: 'purple',
 					key: 1,
+					path:'/pages/community/community'
+					
 				}, {
-					name: '运动',
-					path: 'run',
+					name: '好运',
 					color: 'mauve',
 					key: 2,
+					path:'/pages/play/play'
+				
 				}, {
-					name: '养生',
+					name: '日记',
 					key: 3,
-					path: 'run',
 					color: 'pink',
+					path:'/pages/write/write'
+					
 				}, {
 					name: '郊游',
 					key: 4,

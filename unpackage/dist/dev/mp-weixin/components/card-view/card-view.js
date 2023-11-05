@@ -4,20 +4,20 @@ const _sfc_main = {
   data() {
     return {
       list: [{
-        name: "饮食",
-        path: "each",
+        name: "论坛",
         color: "purple",
-        key: 1
+        key: 1,
+        path: "/pages/community/community"
       }, {
-        name: "运动",
-        path: "run",
+        name: "好运",
         color: "mauve",
-        key: 2
+        key: 2,
+        path: "/pages/play/play"
       }, {
-        name: "养生",
+        name: "日记",
         key: 3,
-        path: "run",
-        color: "pink"
+        color: "pink",
+        path: "/pages/write/write"
       }, {
         name: "郊游",
         key: 4,
@@ -58,7 +58,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.f($data.list, (item, index, i0) => {
       return {
         a: common_vendor.t(item.name),
-        b: "/pages/list/list?type=" + item.path,
+        b: item.path,
         c: common_vendor.n("bg-" + item.color),
         d: common_vendor.s({
           animation: "show " + ((index + 1) * 0.2 + 1) + "s 1"
@@ -68,5 +68,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/lijunkai7/project/HealthyLiving/components/card-view/card-view.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/lijunkai7/Desktop/workspace/HealthyLiving/components/card-view/card-view.vue"]]);
 wx.createComponent(Component);

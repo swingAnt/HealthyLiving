@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/list/list",
-    "pages/detail/detail"
+    "pages/community/community",
+    "pages/detail/detail",
+    "pages/play/play",
+    "pages/write/write"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -10,5 +12,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
+  "permission": {},
   "usingComponents": {}
 }

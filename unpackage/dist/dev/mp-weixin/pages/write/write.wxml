@@ -1,0 +1,1 @@
+<view class="container"><view class="editor-container"><block wx:if="{{r0}}"><editor id="editor" class="ql-container" placeholder="{{a}}" bindready="{{b}}"></editor></block></view><button type="warn" bindtap="{{c}}">撤销</button></view>
